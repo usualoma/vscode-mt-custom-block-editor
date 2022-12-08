@@ -1,0 +1,68 @@
+{
+  "name": "mt-custom-block-editor",
+  "displayName": "MT Custom Block Editor",
+  "description": "Edit json file for custom block",
+  "version": "0.0.1",
+  "publisher": "usualoma",
+  "license": "MIT",
+  "homepage": "https://github.com/usualoma/vscode-mt-custom-block-editor/blob/main/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/usualoma/vscode-mt-custom-block-editor.git"
+  },
+  "engines": {
+    "vscode": "^1.72.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:json",
+    "onFileSystem:mt_custom_block_fs"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "menus": {
+      "editor/title": [
+        {
+          "when": "isMTBlockEditorCustomBlockJSON == true",
+          "command": "fs/openMTCustomBlockFs",
+          "group": "navigation"
+        },
+        {
+          "when": "isMTBlockEditorCustomBlockJSON == true",
+          "command": "mt-custom-block-editor-openBlockEditor",
+          "group": "navigation"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "fs/openMTCustomBlockFs",
+        "title": "edit custom script",
+        "category": "FS",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "mt-custom-block-editor-openBlockEditor",
+        "title": "open mt-block-editor",
+        "icon": "$(open-preview)"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint \"src/**/*.ts\"",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "@types/vscode": "^1.32.0",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "eslint": "^8.26.0",
+    "html-entities": "^2.3.3",
+    "typescript": "^4.8.4"
+  }
+}
